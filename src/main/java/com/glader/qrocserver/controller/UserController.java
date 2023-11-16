@@ -70,7 +70,7 @@ public class UserController {
         String status = MailUtils.sendMail(mail.getEmail(), code);
         JedisPool jedisPool = RedisUtils.open("127.0.0.1", 6379);
         Jedis jedis = jedisPool.getResource();
-        jedis.set(mail.getEmail(), code, new SetParams().px(60000));
+        jedis.set(mail.getEmail(), code, new SetParams().px(120000));
         if (jedis != null) {
             jedis.close();
         }
@@ -85,7 +85,6 @@ public class UserController {
      * 用于验证验证码是否正确
      *
      * @param mail
-     * @param code
      * @return
      */
     @RequestMapping("verify")
@@ -112,6 +111,9 @@ public class UserController {
     public Result register(@RequestBody User user) {
         try {
             userUtils.insert(user);
+            JedisPool jedisPool = RedisUtils.open("127.0.0.1", 6379);
+            Jedis jedis = jedisPool.getResource();
+            jedis.del(user.getEmail());
             return Result.success();
         } catch (Exception e) {
             return Result.error("用户创建失败!");
