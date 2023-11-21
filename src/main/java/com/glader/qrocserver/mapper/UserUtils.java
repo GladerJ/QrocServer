@@ -18,4 +18,7 @@ public interface UserUtils {
     @Select("select * from user where email = #{email}")
     public List<User> selectByEmail(User user);
 
+    @Select("select * from user where username = #{username} and password = #{password}")
+    public List<User> login(User user);
+
 }

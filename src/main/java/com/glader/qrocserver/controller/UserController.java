@@ -3,9 +3,11 @@ package com.glader.qrocserver.controller;
 import com.glader.qrocserver.mapper.UserUtils;
 import com.glader.qrocserver.pojo.Mail;
 import com.glader.qrocserver.pojo.User;
+import com.glader.qrocserver.util.jwt.JwtUtils;
 import com.glader.qrocserver.util.mail.MailUtils;
 import com.glader.qrocserver.util.redis.RedisUtils;
 import com.glader.qrocserver.util.result.Result;
+import io.jsonwebtoken.Claims;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,9 @@ import redis.clients.jedis.params.SetParams;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 //有些接口需要加锁，后期再加
@@ -25,6 +30,40 @@ public class UserController {
 
     @Autowired
     private UserUtils userUtils;
+
+    /**
+     * 验证密钥是否有效
+     */
+
+    @RequestMapping("verifyToken")
+    public Result verifyToken(@RequestBody Result result){
+        try{
+            Claims claims = JwtUtils.parseJWT((String)result.getData());
+            return Result.success();
+        }catch (Exception e){
+            return Result.error("密钥无效!");
+        }
+
+    }
+
+
+    /**
+     * 用于查询该用户账号密码是否正确
+     */
+
+
+    @RequestMapping("login")
+    public Result login(@RequestBody User user){
+        List<User> list = userUtils.login(user);
+        if(list.size() != 0){
+            Map<String,Object> map = new HashMap<>();
+            map.put("username",list.get(0).getUsername());
+            map.put("password",list.get(0).getPassword());
+            String token = JwtUtils.generateJwt(map);
+            return Result.success(token);
+        }
+        return Result.error("用户名或密码错误!");
+    }
 
     /**
      * 用于验证该用户名是否已经存在
