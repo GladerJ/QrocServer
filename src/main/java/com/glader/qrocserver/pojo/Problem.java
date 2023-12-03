@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-
 @Data
 @AllArgsConstructor
 public class Problem {
@@ -15,6 +14,7 @@ public class Problem {
     private Integer questionnaireId;
     //问题序号
     private Integer num;
+
     //问题内容
     private String content;
     //是否是多选 1是，0否

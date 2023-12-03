@@ -1,141 +1,63 @@
 {
-  "questionnaireId": null,
-  "title": "人工智能如何发展?",
-  "createTime": "2023-10-10 10:00:00",
-  "updateTime": "2023-10-10 10:00:00",
-  "username": "lpl123",
+  "createTime": "2023-12-03 06:19:15",
   "problems": [
     {
-      "problemId": null,
-      "questionnaireId": null,
+      "content": "2452",
+      "isMultipleChoice": 1,
       "num": 1,
-      "context": "问题随机0",
-      "isMultipleChoice": 0,
       "options": [
         {
+          "content": "245",
           "optionId": null,
-          "optionNum": "A",
-          "content": "选项随机90",
+          "optionNum": "A. ",
           "problemId": null
         },
         {
+          "content": "2452",
           "optionId": null,
-          "optionNum": "B",
-          "content": "选项随机2",
+          "optionNum": "B. ",
           "problemId": null
         },
         {
+          "content": "245",
           "optionId": null,
-          "optionNum": "C",
-          "content": "选项随机85",
+          "optionNum": "C. ",
           "problemId": null
         },
         {
+          "content": "2452",
           "optionId": null,
-          "optionNum": "D",
-          "content": "选项随机89",
+          "optionNum": "D. ",
           "problemId": null
         }
-      ]
+      ],
+      "problemId": null,
+      "questionnaireId": null
     },
     {
-      "problemId": null,
-      "questionnaireId": null,
+      "content": "45245",
+      "isMultipleChoice": 0,
       "num": 2,
-      "context": "问题随机56",
-      "isMultipleChoice": 0,
       "options": [
         {
+          "content": "245",
           "optionId": null,
-          "optionNum": "A",
-          "content": "选项随机69",
+          "optionNum": "A. ",
           "problemId": null
         },
         {
+          "content": "245",
           "optionId": null,
-          "optionNum": "B",
-          "content": "选项随机22",
-          "problemId": null
-        },
-        {
-          "optionId": null,
-          "optionNum": "C",
-          "content": "选项随机21",
-          "problemId": null
-        },
-        {
-          "optionId": null,
-          "optionNum": "D",
-          "content": "选项随机82",
+          "optionNum": "B. ",
           "problemId": null
         }
-      ]
-    },
-    {
+      ],
       "problemId": null,
-      "questionnaireId": null,
-      "num": 3,
-      "context": "问题随机94",
-      "isMultipleChoice": 0,
-      "options": [
-        {
-          "optionId": null,
-          "optionNum": "A",
-          "content": "选项随机61",
-          "problemId": null
-        },
-        {
-          "optionId": null,
-          "optionNum": "B",
-          "content": "选项随机5",
-          "problemId": null
-        },
-        {
-          "optionId": null,
-          "optionNum": "C",
-          "content": "选项随机58",
-          "problemId": null
-        },
-        {
-          "optionId": null,
-          "optionNum": "D",
-          "content": "选项随机19",
-          "problemId": null
-        }
-      ]
-    },
-    {
-      "problemId": null,
-      "questionnaireId": null,
-      "num": 4,
-      "context": "问题随机39",
-      "isMultipleChoice": 0,
-      "options": [
-        {
-          "optionId": null,
-          "optionNum": "A",
-          "content": "选项随机78",
-          "problemId": null
-        },
-        {
-          "optionId": null,
-          "optionNum": "B",
-          "content": "选项随机6",
-          "problemId": null
-        },
-        {
-          "optionId": null,
-          "optionNum": "C",
-          "content": "选项随机12",
-          "problemId": null
-        },
-        {
-          "optionId": null,
-          "optionNum": "D",
-          "content": "选项随机5",
-          "problemId": null
-        }
-      ]
+      "questionnaireId": null
     }
-  ]
+  ],
+  "questionnaireId": null,
+  "title": "2424",
+  "updateTime": "2023-12-03 06:19:15",
+  "username": "lpl1234"
 }
