@@ -21,4 +21,13 @@ public class QuestionnaireController {
         //用全局异常处理器监听，错误直接返回错误
         return Result.success();
     }
+
+    /**
+     * 删除问卷
+     */
+    @RequestMapping("deleteQuestionnaire")
+    public Result deleteQuestionnaire(@RequestBody Questionnaire questionnaire){
+        questionnaireService.deleteQuestionnaire(questionnaire);
+        return Result.success();
+    }
 }

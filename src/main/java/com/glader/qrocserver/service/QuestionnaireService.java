@@ -26,4 +26,9 @@ public class QuestionnaireService {
             });
         });
     }
+    public void deleteQuestionnaire(Questionnaire questionnaire){
+        questionMapper.deleteOptionByQuestionnaireId(questionnaire);
+        questionMapper.deleteProblemByQuestionnaireId(questionnaire);
+        questionMapper.deleteQuestionByQuestionnaireId(questionnaire);
+    }
 }

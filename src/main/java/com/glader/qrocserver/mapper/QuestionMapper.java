@@ -3,6 +3,7 @@ package com.glader.qrocserver.mapper;
 import com.glader.qrocserver.pojo.Option;
 import com.glader.qrocserver.pojo.Problem;
 import com.glader.qrocserver.pojo.Questionnaire;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -20,4 +21,17 @@ public interface QuestionMapper {
     @Insert("insert into my_option(OPTION_NUM, CONTENT, PROBLEM_ID) values (#{optionNum},#{content},#{problemId})")
     @Options(useGeneratedKeys = true,keyProperty = "optionId")
     public void insertOption(Option option);
+
+    @Delete("DELETE FROM my_option WHERE problem_id IN (SELECT problem_id FROM problem WHERE questionnaire_id = #{questionnaireId})")
+    public void deleteOptionByQuestionnaireId(Questionnaire questionnaire);
+
+    @Delete("DELETE FROM problem WHERE questionnaire_id = #{questionnaireId}")
+    public void deleteProblemByQuestionnaireId(Questionnaire questionnaire);
+
+    @Delete("DELETE FROM questionnaire WHERE questionnaire_id = #{questionnaireId}")
+    public void deleteQuestionByQuestionnaireId(Questionnaire questionnaire);
+
+
+
+
 }
