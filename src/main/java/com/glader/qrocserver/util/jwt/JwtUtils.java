@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class JwtUtils {
     private static String signKey = "HDKhdasjkdhqpo";
-    //    private static Long expire = 604800000L;
-    private static Long expire = 60000L;
+        private static Long expire = 604800000L;
+//    private static Long expire = 180000L;
 
     /**
      * 生成令牌
