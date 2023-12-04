@@ -29,17 +29,56 @@ public class QuestionnaireController {
             //用全局异常处理器监听，错误直接返回错误
             return Result.success();
         } catch (Exception e) {
-            return Result.error("登录失效，请重新登录！");
+            return Result.error("执行失败，请联系管理员！");
         }
-
     }
+
+    /**
+     * 修改更新问卷
+     */
+    @RequestMapping("updateQuestionnaire")
+    public Result updateQuestionnaire(@RequestBody Questionnaire questionnaire) {
+        String username = questionnaire.getUsername();
+        try {
+            Claims claims = JwtUtils.parseJWT(username);
+            username = (String) claims.get("username");
+            questionnaire.setUsername(username);
+            questionnaireService.updateQuestionnaire(questionnaire);
+            //用全局异常处理器监听，错误直接返回错误
+            return Result.success();
+        } catch (Exception e) {
+            return Result.error("执行失败，请联系管理员！");
+        }
+    }
+
 
     /**
      * 删除问卷
      */
     @RequestMapping("deleteQuestionnaire")
     public Result deleteQuestionnaire(@RequestBody Questionnaire questionnaire) {
-        questionnaireService.deleteQuestionnaire(questionnaire);
-        return Result.success();
+        String username = questionnaire.getUsername();
+        try {
+            Claims claims = JwtUtils.parseJWT(username);
+            username = (String) claims.get("username");
+            questionnaire.setUsername(username);
+            questionnaireService.deleteQuestionnaire(questionnaire);
+            return Result.success();
+        } catch (Exception e) {
+            return Result.error("执行失败，请联系管理员！");
+        }
+
+    }
+
+    /**
+     * 查询问卷
+     */
+    @RequestMapping("searchQuestionnaire")
+    public Result searchQuestionnaire(@RequestBody Questionnaire questionnaire){
+        Questionnaire res = questionnaireService.searchQuestionnaire(questionnaire);
+        if (res == null){
+            return Result.error("该问卷不存在!");
+        }
+        return Result.success(res);
     }
 }

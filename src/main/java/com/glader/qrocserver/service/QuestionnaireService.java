@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class QuestionnaireService {
     @Autowired
     private QuestionMapper questionMapper;
+    //保存问卷
     public void saveQuestionnaire(Questionnaire questionnaire){
         questionMapper.insertQuestionnaire(questionnaire);
         ArrayList<Problem> problems = questionnaire.getProblems();
@@ -27,9 +29,33 @@ public class QuestionnaireService {
             });
         });
     }
+
+    //删除问卷
     public void deleteQuestionnaire(Questionnaire questionnaire){
         questionMapper.deleteOptionByQuestionnaireId(questionnaire);
         questionMapper.deleteProblemByQuestionnaireId(questionnaire);
         questionMapper.deleteQuestionByQuestionnaireId(questionnaire);
+    }
+
+    //修改问卷
+    public void updateQuestionnaire(Questionnaire questionnaire){
+        deleteQuestionnaire(questionnaire);
+        saveQuestionnaire(questionnaire);
+    }
+    //查询问卷
+    public Questionnaire searchQuestionnaire(Questionnaire questionnaire){
+        List<Questionnaire> questionnaires = questionMapper.selectQuestionnaire(questionnaire);
+        if(questionnaires.size() == 0) return null;
+        Questionnaire res = questionnaires.get(0);
+        System.out.println(res);
+        List<Problem> problems = questionMapper.selectProblem(questionnaire);
+        problems.stream().forEach(problem -> {
+            List<Option> options = questionMapper.selectOption(problem);
+            for(Option option : options){
+                problem.addOption(option);
+            }
+            res.addProblem(problem);
+        });
+        return res;
     }
 }

@@ -3,10 +3,14 @@ package com.glader.qrocserver.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 
 import java.util.ArrayList;
 @Data
 @AllArgsConstructor
+
+
 public class Questionnaire {
     //问卷ID
     private Integer questionnaireId;

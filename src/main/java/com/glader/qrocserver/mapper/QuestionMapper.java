@@ -3,10 +3,9 @@ package com.glader.qrocserver.mapper;
 import com.glader.qrocserver.pojo.Option;
 import com.glader.qrocserver.pojo.Problem;
 import com.glader.qrocserver.pojo.Questionnaire;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface QuestionMapper {
@@ -31,7 +30,29 @@ public interface QuestionMapper {
     @Delete("DELETE FROM questionnaire WHERE questionnaire_id = #{questionnaireId}")
     public void deleteQuestionByQuestionnaireId(Questionnaire questionnaire);
 
+    @Select("select * from questionnaire where questionnaire_id = #{questionnaireId}")
+    @Results({
+            @Result(column = "questionnaire_id", property = "questionnaireId"),
+            @Result(column = "create_time", property = "createTime"),
+            @Result(column = "update_time", property = "updateTime")
+    })
+    public List<Questionnaire> selectQuestionnaire(Questionnaire questionnaire);
 
+    @Select("select * from problem where questionnaire_id = #{questionnaireId} order by num")
+    @Results({
+            @Result(column = "problem_id", property = "problemId"),
+            @Result(column = "questionnaire_id", property = "questionnaireId"),
+            @Result(column = "is_multiple_choice", property = "isMultipleChoice")
+    })
+    public List<Problem> selectProblem(Questionnaire questionnaire);
+
+    @Select("select * from my_option where problem_id = #{problemId} order by option_num")
+    @Results({
+            @Result(column = "problem_id", property = "problemId"),
+            @Result(column = "option_num", property = "optionNum"),
+            @Result(column = "option_id", property = "optionId")
+    })
+    public List<Option> selectOption(Problem problem);
 
 
 }
