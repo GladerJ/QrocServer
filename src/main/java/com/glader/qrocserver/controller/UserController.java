@@ -39,7 +39,12 @@ public class UserController {
     public Result verifyToken(@RequestBody Result result){
         try{
             Claims claims = JwtUtils.parseJWT((String)result.getData());
-            return Result.success();
+            User user = new User();
+            String username = (String)claims.get("username");
+            user.setUsername(username);
+            List<User> users = userUtils.selectByUsername(user);
+            user.setEmail(users.get(0).getEmail());
+            return Result.success(user);
         }catch (Exception e){
             return Result.error("密钥无效!");
         }
@@ -170,6 +175,8 @@ public class UserController {
         }
         return s;
     }
+
+
 
 
 }

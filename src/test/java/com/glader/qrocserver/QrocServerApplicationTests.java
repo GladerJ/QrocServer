@@ -45,21 +45,21 @@ class QrocServerApplicationTests {
 //        }
 //    }
 //
-//    @Test
-//    void testLogin(){
-//        User user = new User();
-//        user.setUsername("lpl");
-//        user.setPassword("jiejie");
-//        List<User> list = userUtils.login(user);
-//        if(list.size() != 0){
-//            Map<String,Object> map = new HashMap<>();
-//            map.put("username",list.get(0).getUsername());
-//            map.put("password",list.get(0).getPassword());
-//            String token = JwtUtils.generateJwt(map);
-//            System.out.println(token);
-//        }
-//        //return Result.error("用户名或密码错误!");
-//    }
+    @Test
+    void testLogin(){
+        User user = new User();
+        user.setUsername("lpl1234");
+        user.setPassword("030424");
+        List<User> list = userUtils.login(user);
+        if(list.size() != 0){
+            Map<String,Object> map = new HashMap<>();
+            map.put("username",list.get(0).getUsername());
+            map.put("password",list.get(0).getPassword());
+            String token = JwtUtils.generateJwt(map);
+            System.out.println(token);
+        }
+        //return Result.error("用户名或密码错误!");
+    }
 //
 //    @Test
 //    void testToken(){
@@ -91,6 +91,8 @@ class QrocServerApplicationTests {
     void testChat() throws JSONException, IOException {
         System.out.println(ChatUtils.chat("请你生成一个关于的调查问卷，只生成单选题或多选题，至少包含5个题目，以JSON形式返回给我，其中title表示问卷标题，people表示目前已经填写问卷的人数，你默认填0就行，这两个相同然后problems表示问题集合，在每个问题中，num表示题号，按照题目顺序依次编号，每个问题中还有一个content表示问题的内容，isMultipleChoice表示是否多选，如果是1，表示是多选，如果是0表示单选，每个问题里面包含一个options集合，表示选项集合，optionNum表示选项号包含一个字母和一个点，从A开始标，最多26个选项，options中的content表示选项的内容，每个option中还有一个count，你默认填0即可。"));
     }
+
+
 
 
 
