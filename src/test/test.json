@@ -1,63 +1,142 @@
 {
-  "createTime": "2023-12-03 06:19:15",
+  "title": "数学调查问卷",
+  "people": 0,
   "problems": [
     {
-      "content": "2452",
-      "isMultipleChoice": 1,
       "num": 1,
+      "content": "你对数学的兴趣程度如何？",
+      "isMultipleChoice": 0,
       "options": [
         {
-          "content": "245",
-          "optionId": null,
-          "optionNum": "A. ",
-          "problemId": null
+          "optionNum": "A.",
+          "content": "非常感兴趣",
+          "count": 0
         },
         {
-          "content": "2452",
-          "optionId": null,
-          "optionNum": "B. ",
-          "problemId": null
+          "optionNum": "B.",
+          "content": "比较感兴趣",
+          "count": 0
         },
         {
-          "content": "245",
-          "optionId": null,
-          "optionNum": "C. ",
-          "problemId": null
+          "optionNum": "C.",
+          "content": "一般般",
+          "count": 0
         },
         {
-          "content": "2452",
-          "optionId": null,
-          "optionNum": "D. ",
-          "problemId": null
+          "optionNum": "D.",
+          "content": "不感兴趣",
+          "count": 0
         }
-      ],
-      "problemId": null,
-      "questionnaireId": null
+      ]
     },
     {
-      "content": "45245",
-      "isMultipleChoice": 0,
       "num": 2,
+      "content": "你认为数学对你的日常生活有多重要？",
+      "isMultipleChoice": 0,
       "options": [
         {
-          "content": "245",
-          "optionId": null,
-          "optionNum": "A. ",
-          "problemId": null
+          "optionNum": "A.",
+          "content": "非常重要",
+          "count": 0
         },
         {
-          "content": "245",
-          "optionId": null,
-          "optionNum": "B. ",
-          "problemId": null
+          "optionNum": "B.",
+          "content": "比较重要",
+          "count": 0
+        },
+        {
+          "optionNum": "C.",
+          "content": "一般般",
+          "count": 0
+        },
+        {
+          "optionNum": "D.",
+          "content": "不重要",
+          "count": 0
         }
-      ],
-      "problemId": null,
-      "questionnaireId": null
+      ]
+    },
+    {
+      "num": 3,
+      "content": "你认为数学是一门难学的学科吗？",
+      "isMultipleChoice": 0,
+      "options": [
+        {
+          "optionNum": "A.",
+          "content": "非常难学",
+          "count": 0
+        },
+        {
+          "optionNum": "B.",
+          "content": "有点难学",
+          "count": 0
+        },
+        {
+          "optionNum": "C.",
+          "content": "还好",
+          "count": 0
+        },
+        {
+          "optionNum": "D.",
+          "content": "不难学",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "num": 4,
+      "content": "你喜欢数学中的哪一个方面？",
+      "isMultipleChoice": 1,
+      "options": [
+        {
+          "optionNum": "A.",
+          "content": "代数",
+          "count": 0
+        },
+        {
+          "optionNum": "B.",
+          "content": "几何",
+          "count": 0
+        },
+        {
+          "optionNum": "C.",
+          "content": "概率统计",
+          "count": 0
+        },
+        {
+          "optionNum": "D.",
+          "content": "数论",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "num": 5,
+      "content": "你觉得数学对于解决实际问题有用吗？",
+      "isMultipleChoice": 0,
+      "options": [
+        {
+          "optionNum": "A.",
+          "content": "非常有用",
+          "count": 0
+        },
+        {
+          "optionNum": "B.",
+          "content": "有点有用",
+          "count": 0
+        },
+        {
+          "optionNum": "C.",
+          "content": "不太有用",
+          "count": 0
+        },
+        {
+          "optionNum": "D.",
+          "content": "一点都不有用",
+          "count": 0
+        }
+      ]
     }
-  ],
-  "questionnaireId": null,
-  "title": "2424",
-  "updateTime": "2023-12-03 06:19:15",
-  "username": "lpl1234"
+  ]
 }
+

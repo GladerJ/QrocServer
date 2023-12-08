@@ -3,6 +3,7 @@ package com.glader.qrocserver.mapper;
 import com.glader.qrocserver.pojo.Option;
 import com.glader.qrocserver.pojo.Problem;
 import com.glader.qrocserver.pojo.Questionnaire;
+import com.glader.qrocserver.pojo.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -53,6 +54,20 @@ public interface QuestionMapper {
             @Result(column = "option_id", property = "optionId")
     })
     public List<Option> selectOption(Problem problem);
+
+    @Update("update my_option set count = count + 1 where option_id = #{optionId}")
+    public void addCountForOption(String optionId);
+
+    @Update("update questionnaire set people = people + 1 where questionnaire_id = #{questionnaireId}")
+    public void addPeopleForQuestionnaire(String questionnaireId);
+
+    @Select("select * from questionnaire where username = #{username}")
+    @Results({
+            @Result(column = "questionnaire_id", property = "questionnaireId"),
+            @Result(column = "create_time", property = "createTime"),
+            @Result(column = "update_time", property = "updateTime")
+    })
+    public List<Questionnaire> getQuestionnaires(User user);
 
 
 }

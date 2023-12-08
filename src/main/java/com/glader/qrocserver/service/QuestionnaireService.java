@@ -4,6 +4,7 @@ import com.glader.qrocserver.mapper.QuestionMapper;
 import com.glader.qrocserver.pojo.Option;
 import com.glader.qrocserver.pojo.Problem;
 import com.glader.qrocserver.pojo.Questionnaire;
+import com.glader.qrocserver.pojo.User;
 import com.glader.qrocserver.util.jwt.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,7 @@ public class QuestionnaireService {
         List<Questionnaire> questionnaires = questionMapper.selectQuestionnaire(questionnaire);
         if(questionnaires.size() == 0) return null;
         Questionnaire res = questionnaires.get(0);
-        System.out.println(res);
+
         List<Problem> problems = questionMapper.selectProblem(questionnaire);
         problems.stream().forEach(problem -> {
             List<Option> options = questionMapper.selectOption(problem);
@@ -57,5 +58,17 @@ public class QuestionnaireService {
             res.addProblem(problem);
         });
         return res;
+    }
+    public void addCountForOptions(ArrayList<String> arrayList){
+        String questionnaireId = arrayList.get(arrayList.size() - 1);
+        arrayList.remove(arrayList.size() - 1);
+        arrayList.stream().forEach(s -> {
+            questionMapper.addCountForOption(s);
+        });
+        questionMapper.addPeopleForQuestionnaire(questionnaireId);
+    }
+
+    public List<Questionnaire> getQuestionnaires(User user){
+        return questionMapper.getQuestionnaires(user);
     }
 }

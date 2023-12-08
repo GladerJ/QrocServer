@@ -6,14 +6,15 @@ import lombok.NoArgsConstructor;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 @Data
 @AllArgsConstructor
 
 
-public class Questionnaire {
+public class Questionnaire implements Serializable {
     //问卷ID
-    private Integer questionnaireId;
+    private Long questionnaireId;
     //问卷标题
     private String title;
 
@@ -25,6 +26,9 @@ public class Questionnaire {
     private String username;
     //问题集合
     private ArrayList<Problem> problems;
+
+    //有多少人填过这个问卷
+    private Long people;
     public Questionnaire(){
         problems = new ArrayList<>();
     }

@@ -130,6 +130,9 @@ public class UserController {
     public Result verify(@RequestBody Mail mail) {
         Jedis jedis = RedisUtils.open("127.0.0.1", 6379).getResource();
         String realCode = jedis.get(mail.getEmail());
+        if(jedis != null) {
+            jedis.close();
+        }
         if (realCode == null) {
             return Result.error("验证码不存在!");
         }
@@ -167,4 +170,6 @@ public class UserController {
         }
         return s;
     }
+
+
 }

@@ -4,16 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 @Data
 @AllArgsConstructor
-public class Problem {
+public class Problem implements Serializable {
     //问题ID
-    private Integer problemId;
+    private Long problemId;
     //所属问卷ID
-    private Integer questionnaireId;
+    private Long questionnaireId;
     //问题序号
-    private Integer num;
+    private Long num;
 
     //问题内容
     private String content;
