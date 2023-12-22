@@ -157,12 +157,17 @@ public class UserController {
     @RequestMapping("register")
     public Result register(@RequestBody User user) {
         try {
+//            System.out.println(user);
             userUtils.insert(user);
             JedisPool jedisPool = RedisUtils.open("127.0.0.1", 6379);
             Jedis jedis = jedisPool.getResource();
             jedis.del(user.getEmail());
+            if(jedis != null) {
+                jedis.close();
+            }
             return Result.success();
         } catch (Exception e) {
+            e.printStackTrace();
             return Result.error("用户创建失败!");
         }
     }

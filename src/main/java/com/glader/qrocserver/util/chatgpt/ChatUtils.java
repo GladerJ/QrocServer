@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class ChatUtils {
-    private static final String api_key = "sk-bLDACgF5fn1vsr1b52B792C1Aa18472a9dC735A8EcC381E3";
+    private static final String api_key = "sk-A6uHer91ZVQZbCEx34AbB78350F043A989Df2dA186F0D8Df";
     public static String chat(String input) throws IOException, JSONException {
         MediaType mediaType = MediaType.parse("application/json");
         input = "\"" + input + "\"";
@@ -28,7 +28,7 @@ public class ChatUtils {
                 "  }";
         RequestBody body = RequestBody.create(mediaType, content);
         Request request = new Request.Builder()
-                .url("https://gpt.wf/v1/chat/completions")
+                .url("https://www.gptapi.us/v1/chat/completions")
                 .post(body)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Authorization", "Bearer " + api_key)  // 添加 API 密钥到请求头部
